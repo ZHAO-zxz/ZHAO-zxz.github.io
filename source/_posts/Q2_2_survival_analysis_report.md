@@ -17,12 +17,12 @@ tags:
 设随机变量 **T** 表示客户从签约到流失所经历的时间，则生存分析中最重要的两个函数是：
 
 ### 1. 生存函数（Survival Function）
-[图片]
+![图片](/images/1.png)
 
 表示客户“至少还能存活到时刻 \(t\) 之后”的概率。
 
 ### 2. 风险函数（Hazard Function）
-[图片]
+![图片](/images/2.png)
 
 表示客户在“已经活到 \(t\)”这一条件下，在下一瞬间发生流失的即时风险。
 
@@ -56,7 +56,7 @@ Silver 层则体现了分析目标导向的“数据裁剪”。notebook 在构�
 
 Kaplan–Meier（KM）方法是一个**非参数模型**，用于直接估计生存函数 \(S(t)\)。它的核心估计式是：
 
-[图片]
+![图片](/images/3.png)
 
 其中：
 
@@ -84,7 +84,7 @@ Kaplan–Meier（KM）方法是一个**非参数模型**，用于直接估计生
 
 Kaplan–Meier 模型给出的总体中位生存时间为 **34 个月**：
 
-![图片](/source/images/image.png)
+![图片](/images/image.png)
 
 这意味着：在当前筛选后的客户群中，约有一半用户会在 34 个月之前流失，另一半会在 34 个月之后仍然留存。
 
@@ -94,7 +94,7 @@ Kaplan–Meier 模型给出的总体中位生存时间为 **34 个月**：
 
 #### 协变量分组
 
-![图片](/source/images/image(1).png)
+![图片](/images/image(1).png)
 
 如果某一列变量对应的不同组别有明显分离的生存曲线，那么这列变量就可能对预测很有用；反过来，如果曲线几乎重合，那么这列变量的单变量区分能力就很有限。
 
@@ -128,7 +128,7 @@ Cox 模型是一个**半参数模型**，与 Kaplan–Meier 相比，Cox 更适�
 h(t \mid x) = h_0(t)\exp(\beta^\top x)
 \]
 
-![图片](/source/images/image(2).png)
+![图片](/images/image(2).png)
 
 它把整体 hazard ratio 拆成两部分。第一部分是 baseline hazard，即基准风险，表示当所有变量都固定在参考水平时的风险；第二部分是 partial hazard，即由协变量偏离基准水平所带来的倍率变化。
 
@@ -150,9 +150,9 @@ baseline hazard 是时间 \(t\) 的函数，但 partial hazard 不依赖时间�
 
 ### 结果分析
 
-![图片](/source/images/image(3).png)
+![图片](/images/image(3).png)
 
-![图片](/source/images/image(4).png)
+![图片](/images/image(4).png)
 
 - dependents_Yes: coef = -0.33，HR = 0.72
 - internetService_DSL: coef = -0.22，HR = 0.80
@@ -176,7 +176,7 @@ baseline hazard 是时间 \(t\) 的函数，但 partial hazard 不依赖时间�
 
 #### 统计检验
 
-[图片]
+![图片](/images/image(5).png)
 
 在这个模型里，四个协变量中有三个变量的检验结果提示违反了比例风险假设，也就是说，这些变量的风险比并不是稳定不变的：
 
@@ -190,25 +190,25 @@ baseline hazard 是时间 \(t\) 的函数，但 partial hazard 不依赖时间�
 
 internetService_DSL 随时间有明显稳定趋势，onlineBackup_Yes 的趋势最强，而 techSupport_Yes 在时间尾部也出现比较显著的模式。这说明这几个变量都在某种程度上违背了“固定比例风险”的设定。
 
-[图片]
+![图片](/images/image(6).png)
 
-[图片]
+![图片](/images/image(7).png)
 
-[图片]
+![图片](/images/image(8).png)
 
-[图片]
+![图片](/images/image(9).png)
 
 #### log-log 图
 
 通过对曲线做坐标变换，把原本不容易看清的比例关系放大出来。当比例风险假设成立时，log-log 尺度下的曲线应该大致平行：
 
-[图片]
+![图片](/images/image(10).png)
 
-[图片]
+![图片](/images/image(11).png)
 
-[图片]
+![图片](/images/image(12).png)
 
-[图片]
+![图片](/images/image(13).png)
 
 而当前模型中，这些曲线大多并不完全平行，尤其某些变量表现出明显偏离。这进一步佐证了统计检验和 Schoenfeld 残差的结论。
 
@@ -226,7 +226,7 @@ AFT 模型与 Cox 的思想不同。Cox 的语言是“风险变成多少倍”�
 
 如果 \(\exp(\beta) > 1\)，说明该变量把客户流失时间“拉长”；如果 \(\exp(\beta) < 1\)，说明把流失时间“缩短”。
 
-[图片]
+![图片](/images/image(14).png)
 
 AFT 是一个**全参数模型（parametric model）**，也就是它要求你先假定持续时间服从某种具体分布。本实验中使用的是 **Log-Logistic AFT**，这意味着我们假设结果变量服从 log-logistic 分布，并给出相应的生存函数形式。
 
@@ -240,11 +240,11 @@ AFT 是一个**全参数模型（parametric model）**，也就是它要求你�
 
 ### 结果分析
 
-[图片]
+![图片](/images/image(15).png)
 
-[图片]
+![图片](/images/image(16).png)
 
-[图片]
+![图片](/images/image(17).png)
 
 - Median Survival Time = 135.51
 - Concordance = 0.73
@@ -274,7 +274,7 @@ AFT 需要检查两个层面的假设。第一，是 **Proportional Odds** 假�
 
 #### 结果
 
-[图片]
+![图片](/images/image(18).png)
 
 大多数图中的线条相对比较直，虽然存在一定偏差，但整体还不错，因此把 log-logistic 作为结果时间分布是合理的；但是大多数曲线并不平行，因此说明 AFT 结构本身并不完全适合这组变量。
 
@@ -315,15 +315,15 @@ Cox 之所以常用，很大程度上是因为它不需要先假设时间分布�
 3. 调用 `cph.predict_survival_function(df)` 生成该客户画像的未来生存概率曲线，并把这一列命名为 Survival Probability。
 4. 假设每月利润固定为 30，计算 `Avg Expected Monthly Profit = Survival Probability × Monthly Profit`。（这里只是演示，应填入真实数据）
 
-[图片]
+![图片](/images/image(19).png)
 
 5. 利用净现值公式对各月收益做折现。
 
-[图片]
+![图片](/images/image(20).png)
 
 6. 对每个月的 NPV 做累加，得到 Cumulative NPV。
 
-[图片]
+![图片](/images/image(21).png)
 
 这正是整个 CLV 的数学核心：
 
@@ -333,7 +333,7 @@ Cox 之所以常用，很大程度上是因为它不需要先假设时间分布�
 
 #### Survival Probability
 
-[图片]
+![图片](/images/image(22).png)
 
 Survival Probability 直接来自模型预测；  
 Monthly Profit for the Selected Plan 是演示用的固定常数 30；  
@@ -349,7 +349,7 @@ Cumulative NPV 是前面所有月份折现收益的累计和。
 
 #### Cumulative NPV
 
-[图片]
+![图片](/images/image(23).png)
 
 对应的累计净现值（Cumulative NPV）为：
 
@@ -361,7 +361,7 @@ Cumulative NPV 是前面所有月份折现收益的累计和。
 
 #### 留存概率曲线
 
-[图片]
+![图片](/images/image(24).png)
 
 根据 widgets 中选择的一类客户画像动态生成的。
 
