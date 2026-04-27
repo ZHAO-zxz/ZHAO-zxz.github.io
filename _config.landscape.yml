@@ -1,0 +1,4 @@
+# Landscape 主题配置
+# 完全禁用侧边栏
+sidebar: false
+widgets: []
