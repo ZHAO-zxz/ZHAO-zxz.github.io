@@ -130,6 +130,7 @@ $$
 h(t \mid x) = h_0(t)\exp(\beta^\top x)
 $$
 
+
 <img src="/images/image(3).png" style="width: 70%;">
 
 它把整体 hazard ratio 拆成两部分。第一部分是 baseline hazard，即基准风险，表示当所有变量都固定在参考水平时的风险；第二部分是 partial hazard，即由协变量偏离基准水平所带来的倍率变化。
@@ -387,3 +388,15 @@ CLV 的结论高度依赖两个外生假设：
 
 
 在 Cox 与 AFT 两部分的比较传递出一个成熟的统计态度：**没有哪种方法永远最好，关键在于目标是推断还是预测，以及模型假设是否足够合理。**
+
+
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']]
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
