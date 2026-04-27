@@ -84,7 +84,7 @@ Kaplan–Meier（KM）方法是一个**非参数模型**，用于直接估计生
 
 Kaplan–Meier 模型给出的总体中位生存时间为 **34 个月**：
 
-[图片]
+![图片](/source/images/image.png)
 
 这意味着：在当前筛选后的客户群中，约有一半用户会在 34 个月之前流失，另一半会在 34 个月之后仍然留存。
 
@@ -94,7 +94,7 @@ Kaplan–Meier 模型给出的总体中位生存时间为 **34 个月**：
 
 #### 协变量分组
 
-[图片]
+![图片](/source/images/image(1).png)
 
 如果某一列变量对应的不同组别有明显分离的生存曲线，那么这列变量就可能对预测很有用；反过来，如果曲线几乎重合，那么这列变量的单变量区分能力就很有限。
 
@@ -128,7 +128,7 @@ Cox 模型是一个**半参数模型**，与 Kaplan–Meier 相比，Cox 更适�
 h(t \mid x) = h_0(t)\exp(\beta^\top x)
 \]
 
-[图片]
+![图片](/source/images/image(2).png)
 
 它把整体 hazard ratio 拆成两部分。第一部分是 baseline hazard，即基准风险，表示当所有变量都固定在参考水平时的风险；第二部分是 partial hazard，即由协变量偏离基准水平所带来的倍率变化。
 
@@ -150,9 +150,9 @@ baseline hazard 是时间 \(t\) 的函数，但 partial hazard 不依赖时间�
 
 ### 结果分析
 
-[图片]
+![图片](/source/images/image(3).png)
 
-[图片]
+![图片](/source/images/image(4).png)
 
 - dependents_Yes: coef = -0.33，HR = 0.72
 - internetService_DSL: coef = -0.22，HR = 0.80
